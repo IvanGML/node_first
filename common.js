@@ -1,12 +1,17 @@
-// const button = document.querySelector('button');
-// button.addEventListener('click', ()=>console.log('ку-ку'));
-
-const getUser = () => {
-    return {
-        user: "Ivan",
-        password: 1234
-    }
+async function getUser() {
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            resolve({
+                user: "Ivan",
+                password: 1234
+            })
+        }, 1000);
+    });
 }
 
-let any = getUser();
-console.log(any);
+async function print() {
+    const user = await getUser();
+    console.log(user);
+}
+
+print();
